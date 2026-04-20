@@ -1,0 +1,41 @@
+{
+  "yaml.schemas": {
+    "kubernetes": ["**/*.yaml", "**/*.yml"]
+  },
+  "yaml.validate": true,
+  "yaml.hover": true,
+  "yaml.completion": true,
+  "yaml.format.enable": true,
+
+  "editor.formatOnSave": true,
+  "editor.rulers": [120],
+  "editor.renderWhitespace": "boundary",
+  "editor.minimap.enabled": false,
+  "editor.wordWrap": "on",
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.fontFamily": "JetBrainsMono Nerd Font",
+  "editor.fontSize": 14,
+  "editor.fontLigatures": true,
+
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.associations": {
+    "*.yml": "yaml",
+    "Dockerfile*": "dockerfile",
+    ".env*": "shellscript",
+    "*.j2": "jinja"
+  },
+
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  "terminal.integrated.fontSize": 13,
+
+  "git.autofetch": true,
+  "git.confirmSync": false,
+
+  "ansible.validation.lint.enabled": true,
+  "ansible.python.interpreterPath": "/usr/bin/python3",
+
+  "workbench.colorTheme": "Default Dark Modern",
+  "workbench.startupEditor": "none"
+}   

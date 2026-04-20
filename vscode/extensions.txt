@@ -1,0 +1,12 @@
+redhat.vscode-yaml
+ms-kubernetes-tools.vscode-kubernetes-tools
+tim-koehler.helm-intellisense
+redhat.ansible
+gitlab.gitlab-workflow
+ms-azuretools.vscode-docker
+timonwong.shellcheck
+foxundermoon.shell-format
+eamodio.gitlens
+oderwat.indent-rainbow
+usernamehw.errorlens
+gruntfuggly.todo-tree

@@ -1,0 +1,100 @@
+{
+  "K8s Deployment": {
+    "prefix": "kdeploy",
+    "body": [
+      "apiVersion: apps/v1",
+      "kind: Deployment",
+      "metadata:",
+      "  name: ${1:app-name}",
+      "  namespace: ${2:default}",
+      "  labels:",
+      "    app: ${1:app-name}",
+      "spec:",
+      "  replicas: ${3:1}",
+      "  selector:",
+      "    matchLabels:",
+      "      app: ${1:app-name}",
+      "  template:",
+      "    metadata:",
+      "      labels:",
+      "        app: ${1:app-name}",
+      "    spec:",
+      "      containers:",
+      "        - name: ${1:app-name}",
+      "          image: ${4:image}:${5:latest}",
+      "          ports:",
+      "            - containerPort: ${6:8080}",
+      "          resources:",
+      "            requests:",
+      "              memory: ${7:128Mi}",
+      "              cpu: ${8:100m}",
+      "            limits:",
+      "              memory: ${9:256Mi}",
+      "              cpu: ${10:200m}",
+      "$0"
+    ]
+  },
+  "K8s Service": {
+    "prefix": "ksvc",
+    "body": [
+      "apiVersion: v1",
+      "kind: Service",
+      "metadata:",
+      "  name: ${1:app-name}",
+      "  namespace: ${2:default}",
+      "spec:",
+      "  selector:",
+      "    app: ${1:app-name}",
+      "  ports:",
+      "    - port: ${3:80}",
+      "      targetPort: ${4:8080}",
+      "  type: ${5|ClusterIP,NodePort,LoadBalancer|}",
+      "$0"
+    ]
+  },
+  "K8s ConfigMap": {
+    "prefix": "kcm",
+    "body": [
+      "apiVersion: v1",
+      "kind: ConfigMap",
+      "metadata:",
+      "  name: ${1:config-name}",
+      "  namespace: ${2:default}",
+      "data:",
+      "  ${3:key}: ${4:value}",
+      "$0"
+    ]
+  },
+  "K8s Namespace": {
+    "prefix": "kns",
+    "body": [
+      "apiVersion: v1",
+      "kind: Namespace",
+      "metadata:",
+      "  name: ${1:namespace}",
+      "$0"
+    ]
+  },
+  "GitLab CI Job": {
+    "prefix": "gljob",
+    "body": [
+      "${1:job-name}:",
+      "  stage: ${2|build,test,deploy|}",
+      "  image: ${3:alpine}",
+      "  script:",
+      "    - ${4:echo hello}",
+      "  only:",
+      "    - ${5:main}",
+      "$0"
+    ]
+  },
+  "Ansible Task": {
+    "prefix": "atask",
+    "body": [
+      "- name: ${1:task description}",
+      "  ${2|ansible.builtin.apt,ansible.builtin.copy,ansible.builtin.template,ansible.builtin.service,ansible.builtin.shell|}:",
+      "    ${3:param}: ${4:value}",
+      "$0"
+    ]
+  }
+}
