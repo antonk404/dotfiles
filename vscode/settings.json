@@ -36,6 +36,8 @@
   "ansible.validation.lint.enabled": true,
   "ansible.python.interpreterPath": "/usr/bin/python3",
 
-  "workbench.colorTheme": "Default Dark Modern",
-  "workbench.startupEditor": "none"
-}   
+  "workbench.colorTheme": "Dark Modern",
+  "workbench.startupEditor": "none",
+  "explorer.confirmDragAndDrop": false,
+  "explorer.confirmDelete": false
+}

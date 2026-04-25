@@ -4,24 +4,12 @@ HISTSIZE=10000
 SAVEHIST=10000
 setopt SHARE_HISTORY HIST_IGNORE_DUPS HIST_IGNORE_SPACE
 
-# Completion
-autoload -Uz compinit && compinit
-
-# PATH
-export PATH="/opt/homebrew/opt/node@24/bin:$PATH"
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/.config/emacs/bin:$PATH"
-
-# Tools
-eval "$(starship init zsh)"
-eval "$(zoxide init zsh --cmd cd)"
-source <(fzf --zsh)
-
-# History
-HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
-setopt SHARE_HISTORY HIST_IGNORE_DUPS HIST_IGNORE_SPACE
+# Prefix-based history search with Up/Down arrows
+autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "^[[A" up-line-or-beginning-search
+bindkey "^[[B" down-line-or-beginning-search
 
 # Completion
 autoload -Uz compinit && compinit
